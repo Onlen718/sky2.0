@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>For Jisoo 🦆</title>
+    <title>For Jisoo ❤️</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
@@ -25,185 +25,78 @@
             50% { opacity: 1; }
         }
 
-        /* Начальная надпись */
-        .intro {
-            position: fixed;
-            top: 50%; left: 50%;
-            transform: translate(-50%, -50%);
-            color: #FFD700;
-            font-size: 1.8rem;
-            text-align: center;
-            z-index: 1000;
-            animation: fadeInOut 3s ease-in-out forwards;
-            pointer-events: none;
-        }
-        @keyframes fadeInOut {
-            0% { opacity: 0; }
-            30% { opacity: 1; }
-            70% { opacity: 1; }
-            100% { opacity: 0; }
-        }
-
-        /* Контейнер с персонажами */
+        /* Персонажи */
         .scene {
-            position: relative;
             display: flex;
-            align-items: flex-end;
+            align-items: center;
             justify-content: center;
-            gap: 20px;
+            gap: 30px;
             z-index: 10;
-            opacity: 0;
-            animation: sceneAppear 2s ease-in-out 3s forwards;
+            margin-bottom: 30px;
         }
-        @keyframes sceneAppear {
-            0% { opacity: 0; transform: translateY(50px); }
-            100% { opacity: 1; transform: translateY(0); }
-        }
-
-        /* Утка */
-        .duck {
-            position: relative;
-            width: 160px;
-            height: 220px;
+        .character {
+            font-size: 8rem;
             animation: float 3s ease-in-out infinite;
+            filter: drop-shadow(0 0 30px rgba(255, 255, 255, 0.3));
+        }
+        .character.robot {
+            animation-delay: 0.5s;
         }
         @keyframes float {
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-15px); }
         }
 
-        .duck-body {
-            position: absolute;
-            bottom: 0; left: 50%;
-            transform: translateX(-50%);
-            width: 150px; height: 170px;
-            background: #f5f5f5;
-            border-radius: 50% 50% 45% 45%;
-            box-shadow: inset -10px -10px 20px rgba(0,0,0,0.1), 0 10px 30px rgba(0,0,0,0.3);
+        /* Сердце между ними */
+        .heart-between {
+            font-size: 4rem;
+            animation: pulse 1.5s infinite;
+            filter: drop-shadow(0 0 30px rgba(255, 69, 180, 0.8));
+        }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.3); }
         }
 
-        .duck-head {
-            position: absolute;
-            top: 0; left: 50%;
-            transform: translateX(-50%);
-            width: 120px; height: 110px;
-            background: #f5f5f5;
-            border-radius: 50%;
-            box-shadow: inset -5px -5px 15px rgba(0,0,0,0.1);
+        /* Текст */
+        h1 {
+            color: #FFD700;
+            font-size: 2rem;
+            margin-bottom: 10px;
+            text-shadow: 0 0 30px rgba(255, 215, 0, 0.8);
+            z-index: 10;
+            text-align: center;
+            animation: glow 2s infinite;
+        }
+        @keyframes glow {
+            0%, 100% { text-shadow: 0 0 20px rgba(255, 215, 0, 0.5); }
+            50% { text-shadow: 0 0 40px rgba(255, 215, 0, 1); }
+        }
+        .subtitle {
+            color: #87CEEB;
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            z-index: 10;
+            text-align: center;
         }
 
-        .eye {
-            position: absolute;
-            top: 35px;
-            width: 30px; height: 30px;
-            background: white;
-            border-radius: 50%;
-            border: 3px solid #333;
+        /* Кнопка */
+        .button {
+            background: linear-gradient(135deg, #FFD700, #FF69B4);
+            color: #0a0a2a;
+            border: none;
+            padding: 18px 50px;
+            border-radius: 50px;
+            font-size: 1.3rem;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 0 40px rgba(255, 215, 0, 0.6);
+            transition: all 0.3s;
+            z-index: 10;
         }
-        .eye-left { left: 25px; }
-        .eye-right { right: 25px; }
-        .pupil {
-            position: absolute;
-            top: 50%; left: 50%;
-            transform: translate(-50%, -50%);
-            width: 15px; height: 15px;
-            background: #000;
-            border-radius: 50%;
-        }
-        .pupil::after {
-            content: '';
-            position: absolute;
-            top: 2px; left: 2px;
-            width: 5px; height: 5px;
-            background: white;
-            border-radius: 50%;
-        }
+        .button:active { transform: scale(0.95); }
 
-        .beak {
-            position: absolute;
-            top: 60px; left: 50%;
-            transform: translateX(-50%);
-            width: 60px; height: 30px;
-            background: #FFB800;
-            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
-            z-index: 2;
-        }
-
-        .wing {
-            position: absolute;
-            top: 100px;
-            width: 40px; height: 70px;
-            background: #ececec;
-            border-radius: 50%;
-        }
-        .wing-left { left: -15px; transform: rotate(-20deg); }
-        .wing-right { right: -15px; transform: rotate(20deg); }
-
-        .feet {
-            position: absolute;
-            bottom: -10px; left: 50%;
-            transform: translateX(-50%);
-            display: flex; gap: 35px;
-        }
-        .foot {
-            width: 45px; height: 18px;
-            background: #FFB800;
-            border-radius: 50% 50% 0 0;
-        }
-
-        /* Робот */
-        .robot {
-            position: relative;
-            width: 140px;
-            height: 200px;
-            animation: float 3s ease-in-out 0.5s infinite;
-        }
-        .robot-head {
-            position: absolute;
-            top: 0; left: 50%;
-            transform: translateX(-50%);
-            width: 100px; height: 90px;
-            background: #4A90D9;
-            border-radius: 20px;
-            box-shadow: 0 0 20px rgba(74, 144, 217, 0.8);
-        }
-        .robot-eye {
-            position: absolute;
-            top: 30px;
-            width: 20px; height: 20px;
-            background: #FFD700;
-            border-radius: 50%;
-            box-shadow: 0 0 10px #FFD700;
-        }
-        .robot-eye-left { left: 20px; }
-        .robot-eye-right { right: 20px; }
-        .robot-antenna {
-            position: absolute;
-            top: -20px; left: 50%;
-            transform: translateX(-50%);
-            width: 4px; height: 20px;
-            background: #4A90D9;
-        }
-        .robot-antenna-ball {
-            position: absolute;
-            top: -30px; left: 50%;
-            transform: translateX(-50%);
-            width: 12px; height: 12px;
-            background: #FF69B4;
-            border-radius: 50%;
-            box-shadow: 0 0 15px #FF69B4;
-        }
-        .robot-body {
-            position: absolute;
-            bottom: 0; left: 50%;
-            transform: translateX(-50%);
-            width: 110px; height: 120px;
-            background: #4A90D9;
-            border-radius: 15px;
-            box-shadow: 0 0 20px rgba(74, 144, 217, 0.5);
-        }
-
-        /* Сердечки */
+        /* Летящие сердечки */
         .heart {
             position: fixed;
             font-size: 2rem;
@@ -215,80 +108,13 @@
             0% { transform: translateY(0) scale(1); opacity: 1; }
             100% { transform: translateY(-100vh) scale(0.3); opacity: 0; }
         }
-
-        /* Текст */
-        h1 {
-            color: #FFD700;
-            font-size: 2rem;
-            margin-top: 30px;
-            text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
-            z-index: 10;
-            text-align: center;
-            opacity: 0;
-            animation: textAppear 2s ease-in-out 5s forwards;
-        }
-        .subtitle {
-            color: #87CEEB;
-            font-size: 1.1rem;
-            margin-top: 10px;
-            z-index: 10;
-            text-align: center;
-            opacity: 0;
-            animation: textAppear 2s ease-in-out 5s forwards;
-        }
-        @keyframes textAppear {
-            0% { opacity: 0; transform: translateY(20px); }
-            100% { opacity: 1; transform: translateY(0); }
-        }
-
-        /* Кнопка */
-        .button {
-            margin-top: 20px;
-            background: linear-gradient(135deg, #FFD700, #FF69B4);
-            color: #0a0a2a;
-            border: none;
-            padding: 15px 40px;
-            border-radius: 30px;
-            font-size: 1.2rem;
-            font-weight: bold;
-            cursor: pointer;
-            box-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
-            transition: all 0.3s;
-            z-index: 10;
-            opacity: 0;
-            animation: textAppear 2s ease-in-out 6s forwards;
-        }
-        .button:active { transform: scale(0.95); }
     </style>
 </head>
 <body>
-    <div class="intro">Jisoo, у меня для тебя кое-что есть... 🦆</div>
-
     <div class="scene">
-        <div class="duck">
-            <div class="duck-body"></div>
-            <div class="duck-head">
-                <div class="eye eye-left"><div class="pupil"></div></div>
-                <div class="eye eye-right"><div class="pupil"></div></div>
-                <div class="beak"></div>
-            </div>
-            <div class="wing wing-left"></div>
-            <div class="wing wing-right"></div>
-            <div class="feet">
-                <div class="foot"></div>
-                <div class="foot"></div>
-            </div>
-        </div>
-
-        <div class="robot">
-            <div class="robot-head">
-                <div class="robot-antenna"></div>
-                <div class="robot-antenna-ball"></div>
-                <div class="robot-eye robot-eye-left"></div>
-                <div class="robot-eye robot-eye-right"></div>
-            </div>
-            <div class="robot-body"></div>
-        </div>
+        <div class="character">🦆</div>
+        <div class="heart-between">❤️</div>
+        <div class="character robot">🤖</div>
     </div>
 
     <h1>Jisoo, ты — моя вселенная</h1>
@@ -323,11 +149,10 @@
             }
         }
 
-        // Музыка
+        // Музыка (Memories)
         const audio = new Audio('https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3');
         audio.loop = true;
         audio.volume = 0.3;
-        // Включаем после первого клика (браузеры блокируют автоплей)
         document.body.addEventListener('click', () => {
             audio.play().catch(() => {});
         }, { once: true });
